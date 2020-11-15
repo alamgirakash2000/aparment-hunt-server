@@ -5,14 +5,13 @@ const instance = mongoose.Schema(
     username: String,
     email: String,
     service: Object,
-    description: String,
+    message: String,
+    phone: String,
     status: String,
-    price: Number,
-    image: String,
   },
   {
     timestamps: true,
   }
 );
 
-export default mongoose.model("orders", instance);
+export default mongoose.model("bookings", instance);

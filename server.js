@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config.js";
 
-import reviewRoutes from "./routes/reviewRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
-import orderRoutes from "./routes/orderRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";
+import bookingRoutes from "./routes/bookingRoutes.js";
 
 // App config
 const app = express();
@@ -15,10 +13,8 @@ const port = process.env.PORT || 5000;
 // Middlewares
 app.use(express.json());
 app.use(cors());
-app.use("/api/reviews", reviewRoutes);
 app.use("/api/services", serviceRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/admins", adminRoutes);
+app.use("/api/booking", bookingRoutes);
 
 // DB config
 mongoose.connect(process.env.DB_URL, {

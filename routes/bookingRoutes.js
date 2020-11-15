@@ -1,5 +1,5 @@
 import express from "express";
-import orderModel from "../models/orderModel.js";
+import bookingModel from "../models/bookingModel.js";
 
 const router = express.Router();
 
@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/:email", (req, res) => {
   const email = req.params.email;
 
-  orderModel.find({ email: email }, (err, data) => {
+  bookingModel.find({ email: email }, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -20,7 +20,7 @@ router.get("/:email", (req, res) => {
 router.get("/", (req, res) => {
   const email = req.params.email;
 
-  orderModel.find((err, data) => {
+  bookingModel.find((err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -32,7 +32,7 @@ router.get("/", (req, res) => {
 // Posting a order
 router.post("/", (req, res) => {
   const order = req.body;
-  orderModel.create(order, (err, data) => {
+  bookingModel.create(order, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -48,7 +48,7 @@ router.patch("/update", async (req, res) => {
 
   let order;
   try {
-    order = await orderModel.findById(id);
+    order = await bookingModel.findById(id);
   } catch (err) {
     res.status(500).send("No order found for this id");
   }
